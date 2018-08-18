@@ -1,4 +1,20 @@
 <h1>Brutal</h1>
+<h2>Contents</h2>
+<ul>
+  <li><a href="#features" title="all features"><b>Features</b></a></li>
+  <li><a href="#layout" title="layout">Layout</a></li>
+  <li><a href="#extras" title="extras">Extras</a></li>
+  <li><a href="#posts" title="posts">Posts</a></li>
+  <li><a href="#customization" title="customization guide"><b>Customization</b></a></li>
+  <li><a href="#accent" title="accent">Accent</a></li>
+  <li><a href="#background" title="background">Background</a></li>
+  <li><a href="#posts" title="posts">Posts</a></li>
+  <li><a href="#other" title="other">Other</a></li>
+  <li><a href="#scrollbar-background" title="scrollbar background">Scrollbar Background</a></li>
+  <li><a href="#text" title="text">Text</a></li>
+  <li><a href="#credits" title="credits"><b>Credits</b></a></li>
+</ul>  
+  
 <h2>Features</h2>
 <h3>Layout</h3>
 <ul>
@@ -32,7 +48,7 @@
 <hr />
 
 <h2>Customization</h2>
-<h3>Accent (#0000ff [blue])</h3>
+<h3>Accent</h3>
 <ul>
 <li><strong>Scrollbar thumb</strong> background.</li>
 <li><strong>Text selection</strong> background.</li>
@@ -55,7 +71,7 @@
 <li><strong>Controls</strong> and <strong>pagination</strong> background.</li>
 <li><strong>Responsive navigation</strong> background on <strong>hover</strong>.</li>
 </ul>
-<h3>Background (#f7f7f8 [very light grey])</h3>
+<h3>Background</h3>
 <ul>
 <li><strong>Audio</strong> background.</li>
 <li><strong>Body</strong> background.</li>
@@ -69,14 +85,14 @@
 <li><strong>Post replies</strong> background.</li>
 <li><strong>Post footer</strong> top border.</li>
 </ul>
-<h3>Other (#000 [black])</h3>
+<h3>Other</h3>
 <ul>
 <li><strong>Post title</strong> color.</li>
 <li><strong>Bold</strong> text.</li>
 <li><strong>Italic</strong> text.</li>
 <li><strong>Sidebar title</strong> color.</li>
 </ul>
-<h3>Posts (#fff [white])</h3>
+<h3>Posts</h3>
 <ul>
 <li><strong>Post</strong> background.</li>
 <li><strong>Asker</strong> and <strong>answerer username</strong> background.</li>
@@ -86,12 +102,12 @@
 <li><strong>Controls</strong> and <strong>pagination</strong> text color.</li>
 <li><strong>Responsive navigation</strong> text color.</li>
 </ul>
-<h3>Scrollbar Background (#e7e7e8 [light grey])</h3>
+<h3>Scrollbar Background</h3>
 <ul>
 <li><strong>Scrollbar</strong> background.</li>
 <li>(If <strong>color: Background</strong> is a light color, make this one darker, otherwise make it lighter. )</li>
 </ul>
-<h3>Text (#333 [very dark grey])</h3>
+<h3>Text</h3>
 <ul>
 <li><strong>Global text</strong> color.</li>
 <li><strong>Link</strong> bottom border on <strong>hover</strong>.</li>

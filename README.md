@@ -30,6 +30,91 @@
 <li>Option to hide captions.</li>
 </ul>
 <hr />
+
+<h2>Customization</h2>
+<h3>Accent (#0000ff [blue])</h3>
+<ul>
+<li><strong>Scrollbar thumb</strong> background.</li>
+<li><strong>Text selection</strong> background.</li>
+<li><strong>Link</strong> color and bottom border.</li>
+<li><strong>Post title</strong> bottom border.</li>
+<li><strong>Header title</strong> bottom border.</li>
+<li><strong>Sidebar title</strong> bottom border.</li>
+<li><strong>Sidebar navigation</strong> top border.</li>
+<li><strong>Navigation links</strong> border.</li>
+<li><strong>Navigation panel links</strong>.</li>
+<li><strong>Quote</strong> border.</li>
+<li><strong>Audio</strong> border.</li>
+<li><strong>Even</strong> (2, 4, 6) <strong>chat</strong> border and text.</li>
+<li><strong>Link post</strong> color and border.</li>
+<li><strong>Question</strong> border and color.</li>
+<li><strong>Question username</strong> (border, text, background).</li>
+<li><strong>Username</strong> background.</li>
+<li>Bottom border on <strong>notes</strong>.</li>
+<li><strong>Hover</strong> background of <strong>post information</strong> and <strong>tags</strong>.</li>
+<li><strong>Controls</strong> and <strong>pagination</strong> background.</li>
+<li><strong>Responsive navigation</strong> background on <strong>hover</strong>.</li>
+</ul>
+<h3>Background (#f7f7f8 [very light grey])</h3>
+<ul>
+<li><strong>Audio</strong> background.</li>
+<li><strong>Body</strong> background.</li>
+<li><strong>Tooltip</strong> background.</li>
+<li><strong>Preformatted text</strong> background (&lt;pre&gt;).</li>
+<li><strong>Searchbar</strong> background.</li>
+<li><strong>Navigation overlay</strong> background.</li>
+<li><strong>Lightbox</strong> background.</li>
+<li><strong>Chat</strong> background and border.</li>
+<li><strong>Reblogged text</strong> background.</li>
+<li><strong>Post replies</strong> background.</li>
+<li><strong>Post footer</strong> top border.</li>
+</ul>
+<h3>Other (#000 [black])</h3>
+<ul>
+<li><strong>Post title</strong> color.</li>
+<li><strong>Bold</strong> text.</li>
+<li><strong>Italic</strong> text.</li>
+<li><strong>Sidebar title</strong> color.</li>
+</ul>
+<h3>Posts (#fff [white])</h3>
+<ul>
+<li><strong>Post</strong> background.</li>
+<li><strong>Asker</strong> and <strong>answerer username</strong> background.</li>
+<li><strong>Asker</strong> and <strong>answerer username</strong> color on hover.</li>
+<li><strong>Username</strong> color.</li>
+<li><strong>Post information</strong> and <strong>tags</strong> color.</li>
+<li><strong>Controls</strong> and <strong>pagination</strong> text color.</li>
+<li><strong>Responsive navigation</strong> text color.</li>
+</ul>
+<h3>Scrollbar Background (#e7e7e8 [light grey])</h3>
+<ul>
+<li><strong>Scrollbar</strong> background.</li>
+<li>(If <strong>color: Background</strong> is a light color, make this one darker, otherwise make it lighter. )</li>
+</ul>
+<h3>Text (#333 [very dark grey])</h3>
+<ul>
+<li><strong>Global text</strong> color.</li>
+<li><strong>Link</strong> bottom border on <strong>hover</strong>.</li>
+<li><strong>Line break</strong> (&lt;hr&gt;).</li>
+<li><strong>Underlined text</strong> bottom border (&lt;u&gt;).</li>
+<li><strong>Marked text</strong> background (&lt;mark&gt;).</li>
+<li><strong>Scroll down</strong> border and text color.</li>
+<li><strong>Searchbar text</strong> color.</li>
+<li><strong>Navigation</strong> text color and borders.</li>
+<li><strong>Navigation overlay hover</strong> text color.</li>
+<li><strong>Odd</strong>&nbsp;(1, 3, 5)&nbsp;<strong>chat</strong>&nbsp;border and text.</li>
+<li><strong>Link post</strong> text and border on hover.</li>
+<li><strong>Answer</strong> border.</li>
+<li><strong>Answer username</strong> (border, color, background).</li>
+<li><strong>Username</strong> background on <strong>hover</strong>.</li>
+<li><strong>Notes link</strong> color and hover border.</li>
+<li><strong>Post information</strong> and <strong>tags</strong> background.</li>
+<li><strong>Controls</strong> and <strong>pagination</strong> background on <strong>hover</strong>.</li>
+<li><strong>Responsive navigation</strong> background.</li>
+</ul>
+
+<hr>
+
 <h2>Credits</h2>
 <ul>
 <li><a href="https://nouvae.tumblr.com/post/176815415055/tutorial-responsive-tumblr-videos-and-external" title="responsive videos" target="_blank">Responsive videos</a>. | by nouvae</li>

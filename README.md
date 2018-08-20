@@ -1,4 +1,7 @@
 <h1>Brutal</h1>
+
+<img src="https://78.media.tumblr.com/bb20678b605487daf040ea424758627f/tumblr_pdnkjvbjOZ1wsskx3o4_r1_1280.png" alt="screenshot of the theme"/>
+
 <h2>Contents</h2>
 <ul>
   <li><a href="#features" title="all features"><b>Features</b></a></li>

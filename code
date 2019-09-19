@@ -50,6 +50,12 @@ Have fun!
     <!-- Changes the toolbar color on mobile. -->
     <meta name="theme-color" content="#0000ff"/>
     
+    <!-- CSS Photosets, by annasthms and espoirthemes -->
+    <link href="https://static.tumblr.com/0podkko/oDSpg7y88/photosets.css" rel="stylesheet">
+    <link href="https://static.tumblr.com/0podkko/xIbplezmo/modified_photosets.css" rel="stylesheet">
+    <script src="https://static.tumblr.com/0podkko/jfMplm3f8/modified_photosets.js"></script>
+    <script>initPhotosets();</script>
+    
     <!-- Tooltip Script -->
     <script src="https://static.tumblr.com/rzl30kg/eAxm7a751/jquery.style-my-tooltips.js"></script>
     <script>
@@ -70,7 +76,13 @@ Have fun!
         $(document).ready(function() {
             $('iframe.tumblr_audio_player').load( function() {
                 $('iframe.tumblr_audio_player').contents().find("head")
-                    .append($("<style type='text/css'> .audio-player{background:{color:Background} !important} </style>"));
+                    .append($("<style type='text/css'> .audio-player{background:{color:Posts} !important} </style>"));
+                 $('iframe.tumblr_audio_player').contents().find("head")
+                    .append($("<style type='text/css'> .track-name{color:{color:Text} !important} </style>"));
+                 $('iframe.tumblr_audio_player').contents().find("head")
+                    .append($("<style type='text/css'> .track-artist{color:{color:Text} !important} </style>")); 
+                 $('iframe.tumblr_audio_player').contents().find("head")
+                    .append($("<style type='text/css'> .play-pause{color:{color:Accent} !important} </style>"));    
             });
         });
     </script>
@@ -85,7 +97,8 @@ Have fun!
     
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,700&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
     
-    <meta name="if:ShowCaptions" content="1"/>
+    <meta name="if:Show Captions" content="1"/>
+    <meta name="if:Show Tags" content="1"/>
     
     <meta name="text:Custom URL 1" content="/"/>
     <meta name="text:Custom Link 1" content="Custom Link 1"/>
@@ -207,12 +220,13 @@ Have fun!
             
             .title{
                 font-size:calc({select:Font Size} * 2.5);
-                width:80%;
+                width:100%;
                 border-bottom:4px solid {color:Accent};
                 font-family:{select:Title Font};
                 font-weight:400;
                 color:{color:Other};
                 margin-bottom:0.5em;
+                text-align:left;
             }
             
             h1{
@@ -347,7 +361,7 @@ Have fun!
                 display:flex;
                 align-items:center;
                 justify-content:center;
-                margin-top:40vh;
+                margin-top:30vh;
             }
             
             #h-icon img{
@@ -372,9 +386,9 @@ Have fun!
             }
             
             #h-down{
-                margin-top:40vh;
-                width:2em;
-                height:2em;
+                margin-top:30vh;
+                width:3em;
+                height:3em;
                 border-radius:50%;
                 border:4px solid {color:Text};
                 display:flex;
@@ -414,6 +428,7 @@ Have fun!
             #else{
                 width:100vw;
                 height:100vh;
+                z-index:-300!important;
                 {block:SearchPage}
                 height:0px;
                 {/block:SearchPage}
@@ -595,16 +610,6 @@ Have fun!
                 font-size: calc({select:Font Size} * 3.75);
             }
             
-            /* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
-            @media screen and (max-height: 450px) {
-                .overlay a {font-size: 20px}
-                .overlay .closebtn {
-                    font-size: calc({select:Font Size} * 2.5);
-                    top: 15px;
-                    right: 35px;
-                }
-            }
-            
             #main{
                 width:70vw;
                 height:0;
@@ -619,7 +624,6 @@ Have fun!
                 height:auto;
                 margin-left:30vw;
                 margin-top:100vh;
-                z-index:-10!important;
                 {block:SearchPage}
                 margin-top:0px;
                 {/block:SearchPage}
@@ -646,37 +650,15 @@ Have fun!
             }
             
             article img{
-                width:100%;
                 max-width:100%;
             }
 
-            .photo-row {
-                padding:0.2em 0;
-                display:flex;
-            }
-
-            .image-container {
-                cursor:pointer;
-                padding:0 0.2em;
-                flex-grow:1;
-            }
-
-            .image-container:first-child {
-                padding-left:0;
-            }
-
-            .image-container:last-child {
-                padding-right:0;
-            }
-
-            .image {
-                width:100%;
-                height:100%;
-            	display:block;
+            /* Photoset Grid */
+            .photoset-grid{
+                grid-gap:16px;
             }
 
             figure.tmblr-full{
-                width:100%;
                 max-width:100%;
                 height:auto;
             }
@@ -718,7 +700,7 @@ Have fun!
             /** AUDIO POST **/
             .audio > iframe{
                 width:100%;
-                max-width:100%;
+                max-width:calc(100% - 8px);
                 border:4px solid {color:Accent};
             }
             
@@ -786,7 +768,7 @@ Have fun!
                 float:right;
                 text-align:right;
                 padding:0.25 0.5em;
-                margin-right:calc(20%);
+                margin-left:40%;
             }
 
             /* Even Chat Lines (2,4,6,…) */
@@ -856,13 +838,11 @@ Have fun!
             /** QUESTION POSTS **/
             /* QUESTION */
             .question{
-                width:80%;
-                margin-left:10%;
-                margin-top:2em;
+                width:calc(100% - 1.5em);
                 margin-bottom:0.5em;
-                padding:0.5em;
+                padding:0.5em 0.75em;
                 display:flex;
-                align-items:center;
+                align-items:flex-start;
                 justify-content:flex-start;
                 flex-direction:column;
                 border:2px solid {color:Accent};
@@ -875,20 +855,8 @@ Have fun!
                 margin-top:0.5em;
             }
 
-            /* Question User Icon */
-            .question-username img{
-                display:none;
-            }
-
             /* Question Username Link */
-            .question-username a{
-                text-decoration:none;
-                border-bottom:none;
-            }
-
             a.asker{
-                text-decoration:none;
-                border-bottom:none;
                 background-color:{color:Posts};
                 color:{color:Accent};
                 border:2px solid {color:Accent};
@@ -898,7 +866,7 @@ Have fun!
                 -o-transition:0.5s;
                 -webkit-transition:0.5s;
             }
-
+            
             a.asker:hover{
                 background-color:{color:Accent};
                 color:{color:Posts};
@@ -910,13 +878,12 @@ Have fun!
 
             /* ANSWER */
             .answer{
-                width:80%;
-                margin-left:10%;
+                width:calc(100% - 1.5em);
                 margin-top:1em;
                 margin-bottom:0.5em;
-                padding:0.5em;
+                padding:0.5em 0.75em;
                 display:flex;
-                align-items:center;
+                align-items:flex-start;
                 justify-content:flex-start;
                 flex-direction:column;
                 border:2px solid {color:Text};
@@ -1020,22 +987,22 @@ Have fun!
 
             /* Liked by … */
             li.like:before{
-                content:"\e155";
+                content:"\ea55";
                 font-family:"honeybee";
                 font-weight:400;
                 position:relative;
-                font-size:{select:Font Size};
+                font-size:calc({select:Font Size} - 2px);
                 padding:0.25em;
                 z-index:10!important;
             }
 
             /* Reblogged by … */
             li.reblog:before{
-                content:"\e3f1";
+                content:"\ebc2";
                 font-family:"honeybee";
                 font-weight:900;
                 position:relative;
-                font-size:{select:Font Size};
+                font-size:calc({select:Font Size} - 2px);
                 padding:0.25em;
                 z-index:10!important;
             }
@@ -1054,11 +1021,11 @@ Have fun!
 
             /* User Replied to … */
             li.reply:before{
-                content:"\e418";
+                content:"\ebce";
                 font-family:"honeybee";
                 font-weight:400;
                 position:relative;
-                font-size:{select:Font Size};
+                font-size:calc({select:Font Size} - 2px);
                 padding:0.25em;
                 z-index:10!important;
             }
@@ -1103,14 +1070,11 @@ Have fun!
             }
 
             /* Info Container */
-            .info{
+            .info, .tags{
                 display:flex;
                 justify-content:flex-start;
                 flex-direction:row;
                 flex-wrap:wrap;
-                margin-bottom:0.5em;
-                line-height:2em;
-
             }
 
             .info .clear{
@@ -1121,116 +1085,27 @@ Have fun!
             a.specs{
                 text-decoration:none;
                 border-bottom:none;
-            }
-
-            /** TIME STAMP **/
-            /* Time Mark */
-            .time mark{
-                padding:0.25em;
+                padding:4px 8px;
                 background-color:{color:Text};
                 color:{color:Posts};
-                margin-right:0.5em;
+                margin-right:8px;
+                margin-bottom:8px;
                 transition:0.5s;
                 -moz-transition:0.5s;
                 -o-transition:0.5s;
                 -webkit-transition:0.5s;
             }
-
-            /* Time Mark on Hover */
-            .time mark:hover{
+            
+            a.specs:hover{
                 background-color:{color:Accent};
                 transition:0.5s;
                 -moz-transition:0.5s;
                 -o-transition:0.5s;
                 -webkit-transition:0.5s;
             }
-
-            /** NOTE COUNT **/
-            /* Notes Mark */
-            .notecount mark{
-                padding:0.25em;
-                background-color:{color:Text};
-                color:{color:Posts};
-                margin-right:0.5em;
-                transition:0.5s;
-                -moz-transition:0.5s;
-                -o-transition:0.5s;
-                -webkit-transition:0.5s;
-            }
-
-            /* Notes Mark on Hover */
-            .notecount mark:hover{
-                background-color:{color:Accent};
-                transition:0.5s;
-                -moz-transition:0.5s;
-                -o-transition:0.5s;
-                -webkit-transition:0.5s;
-            }
-
-            /** VIA **/
-            /* Via Mark */
-            .via mark{
-                padding:0.25em;
-                background-color:{color:Text};
-                color:{color:Posts};
-                margin-right:0.5em;
-                transition:0.5s;
-                -moz-transition:0.5s;
-                -o-transition:0.5s;
-                -webkit-transition:0.5s;
-            }
-
-            /* Via Mark on Hover */
-            .via mark:hover{
-                background-color:{color:Accent};
-                transition:0.5s;
-                -moz-transition:0.5s;
-                -o-transition:0.5s;
-                -webkit-transition:0.5s;
-            }
-
-            /** POST SOURCE **/
-            /* Source Mark */
-            .source mark{
-                padding:0.25em;
-                background-color:{color:Text};
-                color:{color:Posts};
-                margin-right:0.5em;
-                transition:0.5s;
-                -moz-transition:0.5s;
-                -o-transition:0.5s;
-                -webkit-transition:0.5s;
-            }
-
-            /* Source Mark on Hover */
-            .source mark:hover{
-                background-color:{color:Accent};
-                transition:0.5s;
-                -moz-transition:0.5s;
-                -o-transition:0.5s;
-                -webkit-transition:0.5s;
-            }
-
-            /** REBLOG BUTTON **/
-            /* Reblog Button Mark */
-            .reblogged mark{
-                padding:0.25em;
-                background-color:{color:Text};
-                color:{color:Posts};
-                margin-right:0.5em;
-                transition:0.5s;
-                -moz-transition:0.5s;
-                -o-transition:0.5s;
-                -webkit-transition:0.5s;
-            }
-
-            /* Reblog Button Mark on Hover */
-            .reblogged mark:hover{
-                background-color:{color:Accent};
-                transition:0.5s;
-                -moz-transition:0.5s;
-                -o-transition:0.5s;
-                -webkit-transition:0.5s;
+            
+            a.specs span{
+                font-size:calc({select:Font Size} - 2px);
             }
 
             /** LIKE BUTTON **/
@@ -1240,6 +1115,7 @@ Have fun!
                 position:relative;
                 padding-right:3px;
                 margin-top:-0.25em;
+                padding-top:0;
             }
 
             /* Like Button iFrame */
@@ -1256,11 +1132,11 @@ Have fun!
 
             /* Like Button Before Element */
             .like_button::before{
-                content:"\e155";
+                content:"\ea55";
                 font-family:"honeybee";
                 font-weight:700;
                 position:relative;
-                font-size:{select:Font Size};
+                font-size:calc({select:Font Size} - 2px);
                 z-index:10!important;
                 margin-right:0.25em;
             }
@@ -1270,67 +1146,7 @@ Have fun!
                 content:'like';
                 z-index:10!important;
             }
-
-            /* Like Link */
-            a.liked{
-                border-bottom:none;
-            }
-
-            /* Like Mark */
-            a.liked mark{
-                padding:0.25em;
-                background-color:{color:Text};
-                color:{color:Posts};
-                margin-right:0.5em;
-                transition:0.5s;
-                -moz-transition:0.5s;
-                -o-transition:0.5s;
-                -webkit-transition:0.5s;
-            }
-
-            /* Like Mark on Hover */
-            a.liked mark:hover{
-                background-color:{color:Accent};
-                transition:0.5s;
-                -moz-transition:0.5s;
-                -o-transition:0.5s;
-                -webkit-transition:0.5s;
-            }
-
-            /** TAGS **/
-            /* Tag Container */
-            .tag-c{
-                display:flex;
-                justify-content:flex-start;
-                align-items:flex-start;
-                flex-direction:row;
-                flex-wrap:wrap;
-                width:100%;
-                height:auto;
-            }
-
-            /* Tags Mark */
-            .tags mark{
-                padding:0.25em;
-                background-color:{color:Text};
-                color:{color:Posts};
-                margin-right:0.5em;
-                transition:0.5s;
-                -moz-transition:0.5s;
-                -o-transition:0.5s;
-                -webkit-transition:0.5s;
-            }
-
-            /* Tags Mark on Hover */
-            .tags mark:hover{
-                background-color:{color:Accent};
-                transition:0.5s;
-                -moz-transition:0.5s;
-                -o-transition:0.5s;
-                -webkit-transition:0.5s;
-            }
-
-
+            
             /*** MORE ***/
             /* Hides the tumblr app button, by @yeoli-thm */
             .tmblr-iframe--app-cta-button {
@@ -1407,15 +1223,19 @@ Have fun!
                 border-bottom:none;
             }
             
-            /*** RESPONSIVE LAYOUT ***/
-            /** Large Screens **/
-            @media only screen and (min-width:801px){
+            /* RESPONSIVE LAYOUT */
+            /* Large Screens */
+            @media only screen and (min-width:800px){
                 #nav-box{
+                    display:none;
+                }
+                
+                #mb-footer{
                     display:none;
                 }
             }
             
-            /** Small Screens **/
+            /* Small Screens */
             @media only screen and (max-width: 800px){
                 #h-down{
                     width:3em;
@@ -1434,6 +1254,7 @@ Have fun!
                 #posts{
                     width:100vw;
                     margin-left:0;
+                    margin-bottom:10vh;
                 }
                 
                 article{
@@ -1442,19 +1263,11 @@ Have fun!
                 }
                 
                 #big-box{
-                    left:1em;
-                    top:0.5em;
-                    width:42px;
-                    height:240px;
-                    flex-direction:column;
+                    display:none;
                 }
                 
                 #pagi-box{
-                    flex-direction:column;
-                    width:42px;
-                    left:1em;
-                    height:240px;
-                    bottom:0.5em;
+                    display:none;
                 }
                 
                 .box{
@@ -1462,47 +1275,146 @@ Have fun!
                     height:40px;
                 }
                 
-                #nav-box{
-                    left:1em;
-                    top:calc(50vh - (120px - 0.5em));
+                #mb-footer{
+                    width:100vw;
+                    height:10vh;
                     position:fixed;
-                    width:42px;
-                    height:240px;
-                    display:flex;
-                    align-items:center;
-                    justify-content:space-evenly;
-                    flex-direction:column;
+                    bottom:0;
+                    left:0;
+                    z-index:50!important;
+                    background-color:{color:Posts};
+                    border-top:2px solid {color:Text};
                 }
                 
-                .n-box{
-                    width:40px;
-                    height:40px;
-                    border-radius:50%;
-                    background-color:{color:Text};
-                    color:{color:Posts};
+                .mbf-nav{
+                    height:10vh;
+                    width:20vw;
+                    background-color:inherit;
+                    color:{color:Text};
                     display:flex;
                     align-items:center;
                     justify-content:center;
-                    margin-right:0.25em;
-                    margin-left:0.25em;
                     transition:0.5s;
                     -moz-transition:0.5s;
                     -o-transition:0.5s;
                     -webkit-transition:0.5s;
                 }
                 
-                .n-box:hover{
-                    background:{color:Accent};
-                    transform:scale(1.1);
+                .mbf-nav span{
+                    font-size:calc({select:Font Size} + 4px);
+                }
+                
+                .mbf-nav:hover{
+                    background-color:{color:Background};
+                    color:{color:Accent};
+                    cursor:pointer;
                     transition:0.5s;
                     -moz-transition:0.5s;
                     -o-transition:0.5s;
                     -webkit-transition:0.5s;
                 }
                 
-                a.n-link{
+                a.mbf-link{
                     border-bottom:none;
+                }
+                
+                #home, #mcredit, #mnav, #previous, #next{
+                    position:fixed;
+                    z-index:3000!important;
+                    bottom:0;
+                }
+                
+                #previous{
+                    left:0;
+                }
+                
+                #mcredit{
+                    left:calc(25vw - 5vw - 4px);
+                    border-left:2px solid {color:Text};
+                    border-right:2px solid {color:Text};
+                }
+                
+                #home{
+                    left:calc(50vw - 10vw);
+                }
+                
+                #mnav{
+                    right:calc(25vw - 5vw - 4px);
+                    border:none;
+                    border-left:2px solid {color:Text};
+                    border-right:2px solid {color:Text};
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                }
+                
+                /* Style The Dropdown Button */
+                .dropbtn {
+                    background-color:inherit;
+                    color:inherit;
+                    font-size:inherit;
+                    border:none;
+                    cursor:pointer;
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                }
+
+                /* The container <div> - needed to position the dropdown content */
+                .dropdown {
+                    position: relative;
+                    display: inline-block;
+                }
+
+                /* Dropdown Content (Hidden by Default) */
+                .dropdown-content {
+                    display: none;
+                    position: absolute;
+                    background-color: #f9f9f9;
+                    width:calc(20vw - 16px);
+                    z-index: 1;
+                    bottom:100%;
+                    border:2px solid {color:Text};
+                    padding:4px 8px;
+                }
+                
+                /* Links inside the dropdown */
+                .dropdown-content a {
+                    color:{color:Text};
+                    padding:4px 0;
                     text-decoration:none;
+                    display:block;
+                    border-bottom:2px solid {color:Accent};
+                    transition:0.5s;
+                    -moz-transition:0.5s;
+                    -o-transition:0.5s;
+                    -webkit-transition:0.5s;
+                }
+                
+                /* Change color of dropdown links on hover */
+                .dropdown-content a:hover {
+                    color:{color:Accent};
+                    border-bottom:2px solid {color:Text};
+                    transition:0.5s;
+                    -moz-transition:0.5s;
+                    -o-transition:0.5s;
+                    -webkit-transition:0.5s;
+                }
+                
+                /* Show the dropdown menu on hover */
+                .dropdown:hover .dropdown-content {
+                    display:block;
+                }
+                
+                #next{
+                    right:-4px;
+                }
+            }
+            
+            @media only screen and (max-width: 450px){
+                .dropdown-content{
+                    width:calc(80vw - 16px - 4px);
+                    right:-2px;
                 }
             }
             
@@ -1559,7 +1471,7 @@ Have fun!
                     <a href="/" title="index | refresh page" class="nav">
                         <div class="nav-cont">
                             <div class="navbox">
-                                <span class="th th-house-2-o"></span>
+                                <span class="th th-home-o"></span>
                             </div>
                             <div class="navtitle">Index</div>
                         </div>
@@ -1589,7 +1501,7 @@ Have fun!
                     <a onclick="openNav()" title="open navigation" class="nav">
                         <div class="nav-cont">
                             <div class="navbox">
-                                <span class="th th-compass-1-o"></span>
+                                <span class="th th-map-1-o"></span>
                             </div>
                             <div class="navtitle">Navigation</div>
                         </div>
@@ -1616,7 +1528,7 @@ Have fun!
                     <a href="https://silbrigthemes.tumblr.com/" title="theme by @silbrigthemes" class="nav">
                         <div class="nav-cont">
                             <div class="navbox">
-                                <span class="th th-moon-1-o"></span>
+                                <span class="th th-moon-o"></span>
                             </div>
                             <div class="navtitle">Credit</div>
                         </div>
@@ -1657,12 +1569,12 @@ Have fun!
                       {block:HasPermalink}
                       <div class="user">
                           <a target="_blank" class="user" href="{Permalink}">
-                              <mark><span class="th th-user-3-o"></span> {Username}</mark>
+                              <mark><span class="th th-planet-2-o"></span> {Username}</mark>
                           </a>
                       </div>
                       {/block:HasPermalink}
                       {block:HasNoPermalink}
-                      <span class="user"><mark><span class="th th-user-3-o"></span> {Username}</mark></span>
+                      <span class="user"><mark><span class="th th-planet-2-o"></span> {Username}</mark></span>
                       {/block:HasNoPermalink}
                       </div>
                       <div class="text">{Body}</div>
@@ -1677,7 +1589,6 @@ Have fun!
                   {block:Answer}
                   <div class="question">
                   <div class="question-username">
-                      <img src="{AskerPortraitURL-96}" alt="user icon">
                       {Asker}
                   </div>
                   {Question}
@@ -1686,7 +1597,6 @@ Have fun!
                   {block:Answerer}
                   <div class="answer">
                   <div class="answer-username">
-                      <img src="{AnswererPortraitURL-96}" alt="user icon">
                       {Answerer}
                   </div>
                   {Answer}
@@ -1710,12 +1620,12 @@ Have fun!
                       {block:HasPermalink}
                       <div class="user">
                           <a target="_blank" class="user" href="{Permalink}">
-                              <mark><span class="th th-user-3-o"></span> {Username}</mark>
+                              <mark><span class="th th-planet-2-o"></span> {Username}</mark>
                           </a>
                       </div>
                       {/block:HasPermalink}
                       {block:HasNoPermalink}
-                      <span class="user"><mark><span class="th th-user-3-o"></span> {Username}</mark></span>
+                      <span class="user"><mark><span class="th th-planet-2-o"></span> {Username}</mark></span>
                       {/block:HasNoPermalink}
                       </div>
                       <div class="text">{Body}</div>
@@ -1765,12 +1675,12 @@ Have fun!
                       {block:HasPermalink}
                       <div class="user">
                           <a target="_blank" class="user" href="{Permalink}">
-                               <mark><span class="th th-user-3-o"></span> {Username}</mark>
+                               <mark><span class="th th-planet-2-o"></span> {Username}</mark>
                           </a>
                       </div>
                       {/block:HasPermalink}
                       {block:HasNoPermalink}
-                      <span class="user"> <mark><span class="th th-user-3-o"></span> {Username}</mark> </span>
+                      <span class="user"> <mark><span class="th th-planet-2-o"></span> {Username}</mark> </span>
                       {/block:HasNoPermalink}
                       <div class="text">{Body}</div>
                       {/block:Reblogs}
@@ -1802,10 +1712,10 @@ Have fun!
                   <!-- PHOTO POSTS -->
                   {block:Photo}
                   {LinkOpenTag}
-                  <a href="#" onclick="Tumblr.Lightbox.init([{ width: {PhotoWidth-HighRes}, height: {PhotoHeight-HighRes}, high_res: '{PhotoURL-HighRes}' }]); $('body').toggleClass('tumblr_lightbox_active'); return false">
-                      <div class="photo">
-                          <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
-                      </div>
+                  <a href="#" onclick="Tumblr.Lightbox.init([{ width: {PhotoWidth-HighRes}, height: {PhotoHeight-HighRes}, high_res: '{PhotoURL-HighRes}' }]); $('body').toggleClass('tumblr_lightbox_active'); return false" title="click to open lightbox">
+                    <div class="photo">
+                        <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
+                    </div>
                   </a>
                   {LinkCloseTag}
                   {block:IfShowCaptions}
@@ -1826,12 +1736,12 @@ Have fun!
                       {block:HasPermalink}
                       <div class="user">
                           <a target="_blank" class="user" href="{Permalink}">
-                              <mark><span class="th th-user-3-o"></span> {Username}</mark>
+                              <mark><span class="th th-planet-2-o"></span> {Username}</mark>
                           </a>
                       </div>
                       {/block:HasPermalink}
                       {block:HasNoPermalink}
-                      <span class="user"><mark><span class="th th-user-3-o"></span> {Username}</mark></span>
+                      <span class="user"><mark><span class="th th-planet-2-o"></span> {Username}</mark></span>
                       {/block:HasNoPermalink}
                       </div>
                       <div class="text">{Body}</div>
@@ -1845,9 +1755,9 @@ Have fun!
                   <!-- PANORAMA POSTS -->
                   {block:Panorama}
                   {LinkOpenTag}
-                  <a href="#" onclick="Tumblr.Lightbox.init([{ width: {PhotoWidth-HighRes}, height: {PhotoHeight-HighRes}, low_res: '{PhotoURL-500}', high_res: '{PhotoURL-HighRes}' }]); $('body').toggleClass('tumblr_lightbox_active'); return false">
+                  <a href="#" onclick="Tumblr.Lightbox.init([{ width: {PhotoWidth-HighRes}, height: {PhotoHeight-HighRes}, low_res: '{PhotoURL-500}', high_res: '{PhotoURL-HighRes}' }]); $('body').toggleClass('tumblr_lightbox_active'); return false" title="click to open lightbox">
                       <div class="panorama">
-                          <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}">
+                        <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}">
                       </div>
                   </a>
                   {LinkCloseTag}
@@ -1871,12 +1781,12 @@ Have fun!
                       {block:HasPermalink}
                       <div class="user">
                           <a target="_blank" class="user" href="{Permalink}" title="permalink page">
-                              <mark><span class="th th-user-3-o"></span> {Username}</mark>
+                              <mark><span class="th th-planet-2-o"></span> {Username}</mark>
                           </a>
                       </div>
                       {/block:HasPermalink}
                       {block:HasNoPermalink}
-                      <span class="user"><mark><span class="th th-user-3-o"></span> {Username}</mark></span>
+                      <span class="user"><mark><span class="th th-planet-2-o"></span> {Username}</mark></span>
                       {/block:HasNoPermalink}
                       </div>
                       <div class="text">{Body}</div>
@@ -1890,23 +1800,14 @@ Have fun!
 
                   <!-- PHOTOSETS -->
                   {block:Photoset}
-
-                    <div class="photoset" data-layout="{PhotosetLayout}">
-
-                    {block:Photos}
-
-                    <div class="image-container"
-                    data-width="{PhotoWidth-HighRes}"
-                    data-height="{PhotoHeight-HighRes}"
-                    data-lowres="{PhotoURL-500}"
-                    data-highres="{PhotoURL-HighRes}">
-                    <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" class="image"/>
+                  <div class="photoset-grid" photoset-layout="{PhotosetLayout}">
+                  {block:Photos}
+                    <div data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}" data-lowres="{PhotoURL-500}" data-highres="{PhotoURL-HighRes}" onclick="lightbox(this)" title="click to open lightbox">
+                        <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
                     </div>
-
-                    {/block:Photos}
-
-                    </div><!-- photoset -->
-                    {block:Caption}
+                  {/block:Photos}
+                  </div><!-- photoset -->
+                  {block:Caption}
                   {block:NotReblog}
                   {Caption}
                   {/block:NotReblog}
@@ -1925,12 +1826,12 @@ Have fun!
                       {block:HasPermalink}
                       <div class="user">
                           <a target="_blank" class="user" href="{Permalink}">
-                              <mark><span class="th th-user-3-o"></span> {Username}</mark>
+                              <mark><span class="th th-planet-2-o"></span> {Username}</mark>
                           </a>
                       </div>
                       {/block:HasPermalink}
                       {block:HasNoPermalink}
-                      <span class="user"><mark><span class="th th-user-3-o"></span> {Username}</mark></span>
+                      <span class="user"><mark><span class="th th-planet-2-o"></span> {Username}</mark></span>
                       {/block:HasNoPermalink}
                       </div>
                       <div class="text">{Body}</div>
@@ -1965,12 +1866,12 @@ Have fun!
                       {block:HasPermalink}
                       <div class="user">
                           <a target="_blank" class="user" href="{Permalink}">
-                              <mark><span class="th th-user-3-o"></span> {Username}</mark>
+                              <mark><span class="th th-planet-2-o"></span> {Username}</mark>
                           </a>
                       </div>
                       {/block:HasPermalink}
                       {block:HasNoPermalink}
-                      <span class="user"><mark><span class="th th-user-3-o"></span> {Username}</mark></span>
+                      <span class="user"><mark><span class="th th-planet-2-o"></span> {Username}</mark></span>
                       {/block:HasNoPermalink}
                       </div>
                       <div class="text">{Body}</div>
@@ -2003,12 +1904,12 @@ Have fun!
                       {block:HasPermalink}
                       <div class="user">
                           <a target="_blank" class="user" href="{Permalink}">
-                              <mark><span class="th th-user-3-o"></span> {Username}</mark>
+                              <mark><span class="th th-planet-2-o"></span> {Username}</mark>
                           </a>
                       </div>
                       {/block:HasPermalink}
                       {block:HasNoPermalink}
-                      <span class="user"><mark><span class="th th-user-3-o"></span> {Username}</mark></span>
+                      <span class="user"><mark><span class="th th-planet-2-o"></span> {Username}</mark></span>
                       {/block:HasNoPermalink}
                       </div>
                       <div class="text">{Body}</div>
@@ -2018,73 +1919,69 @@ Have fun!
                   {/block:Video}
 
                   <!-- POST FOOTER -->
-                  <div class="post-footer clear">
-                  <div class="info clear">
+                <div class="post-footer">
+                <div class="info">
+                    <!-- TIME STAMP -->
+                    {block:Date}
+                    <a class="specs" href="{Permalink}" title="{Month} {DayOfMonth}, {Year}">
+                        <span class="th th-clock-o" aria-hidden="true"></span> {TimeAgo}
+                    </a>
+                    {/block:Date}
 
-                  <!-- TIME STAMP -->
-                  {block:Date}
-                  <div class="time">
-                  <a class="specs" href="{Permalink}" title="{Month} {DayOfMonth}, {Year}">
-                  <mark><span class="th th-clock-o" aria-hidden="true"></span> {TimeAgo}</mark></a>
-                  </div>
-                  {/block:Date}
+                    <!-- NOTE COUNT -->
+                    {block:NoteCount}
+                    <a class="specs" href="{Permalink}" title="{NoteCountWithLabel}">
+                        <span class="th th-information-o" aria-hidden="true"></span> {NoteCountWithLabel}
+                    </a>
+                    {/block:NoteCount}
 
-                  <!-- NOTE COUNT -->
-                  {block:NoteCount}
-                  <div class="notecount">
-                      <a class="specs" href="{Permalink}" title="{NoteCountWithLabel}">
-                      <mark><span class="th th-information-o" aria-hidden="true"></span> {NoteCountWithLabel}</mark></a>
-                  </div>
+                    <!-- VIA -->
+                    {block:RebloggedFrom}
+                    <a class="specs" href="{ReblogParentURL}" title="via">
+                        <span class="th th-paper-plane-o" aria-hidden="true"></span> via
+                    </a>
+                    {/block:RebloggedFrom}
 
-                  {/block:NoteCount}
+                    <!-- POST SOURCE -->
+                    {block:ContentSource}
+                    <a class="specs" href="{SourceURL}" title="source">
+                        <span class="th th-location-3-o" aria-hidden="true"></span> source
+                    </a>
+                    {/block:ContentSource}
 
-                  <!-- VIA -->
-                  {block:RebloggedFrom}
-                  <div class="via">
-                      <a class="specs" href="{ReblogParentURL}" title="via">
-                          <mark><span class="th th-right-arrow-curved" aria-hidden="true"></span> via</mark>
-                      </a>
-                  </div>
+                    <!-- REBLOG BUTTON -->
+                    <a class="specs" href="{ReblogURL}" title="reblog this post">
+                        <span class="th th-reblog" aria-hidden="true"></span> reblog
+                    </a>
 
-                  {/block:RebloggedFrom}
+                    <!-- LIKE BUTTON -->
+                    <a class="liked specs" href="#" title="like this post">
+                        {LikeButton}
+                    </a>
+                    </div>
 
-                  <!-- POST SOURCE -->
-                  {block:ContentSource}
-                  <div class="source">
-                      <a class="specs" href="{SourceURL}" title="source">
-                          <mark><span class="th th-placeholder-4-o" aria-hidden="true"></span> source</mark>
-                      </a>
-                  </div>
-
-                  {/block:ContentSource}
-
-                  <!-- REBLOG BUTTON -->
-                  <div class="reblogged">
-                      <a class="specs" href="{ReblogURL}" title="reblog this post">
-                          <mark><span class="th th-reload-arrow" aria-hidden="true"></span> reblog</mark>
-                      </a>
-                  </div>
-
-                  <!-- LIKE BUTTON -->
-                  <a class="liked" href="#" title="like this post">
-                  <mark>{LikeButton}</mark>
-                  </a>
-
-                  </div><!-- /info -->
-
-                  <!-- TAGS -->
-                  {block:HasTags}
-                  <div class="tags">
-                  {block:Tags}
-                  <a class="specs" href="{TagURL}" title="tagged as: {Tag}">
-                      <mark>
-                          <span class="th th-tag-o" aria-hidden="true"></span> {Tag}
-                      </mark>
-                  </a>
-                  {/block:Tags}
-                  </div><!-- /tags -->
-                  {/block:HasTags}
-                  </div><!-- /post footer -->
+                    <!-- TAGS -->
+                    {block:HasTags}
+                    <div class="tags">
+                    {block:IfShowTags}
+                    {block:Tags}
+                    <a class="specs" href="{TagURL}" title="tagged as: {Tag}">
+                        # {Tag}
+                    </a>
+                    {/block:Tags}
+                    {block:IfShowTags}
+                    {block:IfNotShowTags}
+                        {block:PermalinkPage}
+                        {block:Tags}
+                        <a class="specs" href="{TagURL}" title="tagged as: {Tag}">
+                            # {Tag}
+                        </a>
+                        {/block:Tags}
+                        {/block:PermalinkPage}
+                    {/block:IfNotShowTags}
+                    </div>
+                    {/block:HasTags}
+                </div> <!-- // end post footer -->
 
                   {block:PermalinkPage}
                   {block:NoteCount}
@@ -2103,7 +2000,7 @@ Have fun!
         <!-- CUSTOM TUMBLR CONTROLS -->
         <div id="big-box">
             <a class="tb" href="https://www.tumblr.com/dashboard" title="go to dashboard">
-                <div class="box"><span class="th th-house-1-o"></span></div>
+                <div class="box"><span class="th th-tumblr-o"></span></div>
             </a>
 
             <a class="tb" href="https://www.tumblr.com/message/{Name}" title="send {Name} a message">
@@ -2111,15 +2008,15 @@ Have fun!
             </a>
 
             <a class="tb" href="https://www.tumblr.com/customize/{Name}?redirect_to=https%3A%2F%2F{Name}.tumblr.com" title="customize theme">
-                <div class="box"><span class="th th-pencil-1-o"></span></div>
+                <div class="box"><span class="th th-pencil-o"></span></div>
             </a>
 
             <a class="tb" href="https://www.tumblr.com/settings/blog/{Name}" title="change settings">
-                <div class="box"><span class="th th-settings-3-o"></span></div>
+                <div class="box"><span class="th th-settings-o"></span></div>
             </a>
 
             <a class="tb" href="https://www.tumblr.com/follow/{Name}" title="follow {Name}">
-                <div class="box"><span class="th th-plus-3-o"></span></div>
+                <div class="box"><span class="th th-plus-1-o"></span></div>
             </a>
         </div>
         
@@ -2130,7 +2027,7 @@ Have fun!
             {block:PreviousPage}
                 <a class="pagi-link" href="{PreviousPage}" title="previous">
                     <div class="box">
-                        <span class="th th-backward-arrow"></span>
+                        <span class="th th-chevron-left"></span>
                     </div>
                 </a>
             {/block:PreviousPage}
@@ -2153,46 +2050,101 @@ Have fun!
             {block:NextPage}
                 <a class="pagi-link" href="{NextPage}" title="next">
                     <div class="box">
-                        <span class="th th-skip-track"></span>
+                        <span class="th th-chevron-right"></span>
                     </div>
                 </a>
             {/block:NextPage}
             {/block:Pagination}
         </div>
         
-        <!-- RESPONSIVE NAVIGATION -->
-        <div id="nav-box">
+        <!-- MOBILE FOOTER -->
+        <div id="mb-footer">
+            <!-- Previous Page -->
+            {block:Pagination}
+            {block:PreviousPage}
+            <a href="{PreviousPage}" title="previous page" class="mbf-link">
+                <div class="mbf-nav" id="previous">
+                    <span class="th th-chevron-left"></span>
+                </div>
+            </a>
+            {/block:PreviousPage}
+            {/block:Pagination}
             
-            <a href="/" title="index / refresh page" class="n-link">
-                <div class="n-box">
-                    <span class="th th-loading-arrows"></span>
+            <!-- Theme Credit -->
+            <a href="https://silbrigthemes.tumblr.com/" title="theme credit" class="mbf-link">
+                <div class="mbf-nav" id="mcredit">
+                    <span class="th th-moon-o"></span>
                 </div>
             </a>
             
-            <a href="/ask" title="ask a question" class="n-link">
-                <div class="n-box">
-                    <span class="th th-envelope-o"></span>
+            <!-- Index -->
+            <a href="/" title="index" class="mbf-link">
+                <div class="mbf-nav" id="home">
+                    <span class="th th-home-o"></span>
                 </div>
             </a>
             
-            <a href="/" title="browse archive" class="n-link">
-                <div class="n-box">
-                    <span class="th th-box-2-o"></span>
+            <!-- Navigation -->
+            <div class="dropdown mbf-nav" id="mnav">
+                <button class="dropbtn">
+                    <span class="th th-map-1-o"></span>
+                </button>
+                <div class="dropdown-content">
+                    <!-- Ask Link -->
+                    {block:AskEnabled}
+                    <a href="/ask" title="{AskLabel}">
+                        {AskLabel}
+                    </a>
+                    {/block:AskEnabled}
+                    <!-- Submissions Link -->
+                    {block:SubmissionsEnabled}
+                    <a href="/submit" title="{SubmitLabel}">
+                        {SubmitLabel}
+                    </a>
+                    {/block:SubmissionsEnabled}
+                    <!-- Archive Link -->
+                    <a href="/archive" title="archive">
+                        Archive
+                    </a>
+                    <!-- Custom Links -->
+                    <a href="{text:Custom URL 1}" title="{text:Custom Link 1}">{text:Custom Link 1}</a>
+                    <a href="{text:Custom URL 2}" title="{text:Custom Link 2}">{text:Custom Link 2}</a>
+                    <a href="{text:Custom URL 3}" title="{text:Custom Link 3}">{text:Custom Link 3}</a>
+                    <a href="{text:Custom URL 4}" title="{text:Custom Link 4}">{text:Custom Link 4}</a>
+                    <a href="{text:Custom URL 5}" title="{text:Custom Link 5}">{text:Custom Link 5}</a>
+                    
+                    <a href="https://www.tumblr.com/dashboard" title="go to dashboard">
+                        Tumblr Dashboard
+                    </a>
+
+                    <a href="https://www.tumblr.com/message/{Name}" title="send {Name} a message">
+                        Tumblr Messenger
+                    </a>
+
+                    <a href="https://www.tumblr.com/customize/{Name}?redirect_to=https%3A%2F%2F{Name}.tumblr.com" title="customize theme">
+                        Customize Theme
+                    </a>
+
+                    <a href="https://www.tumblr.com/settings/blog/{Name}" title="change settings">
+                        Blog Settings
+                    </a>
+        
+                    <a href="https://www.tumblr.com/follow/{Name}" title="follow {Name}">
+                        Follow Blog
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Next Page -->
+            {block:Pagination}
+            {block:NextPage}
+            <a href="{NextPage}" title="next page" class="mbf-link">
+                <div class="mbf-nav" id="next">
+                    <span class="th th-chevron-right"></span>
                 </div>
             </a>
-            
-            <a onclick="openNav()" title="open navigation" class="n-link">
-                <div class="n-box">
-                    <span class="th th-compass-1-o"></span>
-                </div>
-            </a>
-            
-            <a href="/" title="theme by silbrigthemes" class="n-link">
-                <div class="n-box">
-                    <span class="th th-moon-1-o"></span>
-                </div>
-            </a>
-            
+            {/block:NextPage}
+            {/block:Pagination}
         </div>
         
         <!-- SCRIPTS -->
@@ -2215,88 +2167,31 @@ Have fun!
             }
         </script>
         
-        <!-- Flexible photosets. | by 5ppi -->
+        <!-- CSS PHOTOSETS SCRIPT -->
+        <!-- by annasthms and espoirthemes -->
         <script>
-            window.addEventListener('load', startup, false);
-
-            function startup() {
-                let photosets = document.getElementsByClassName("photoset");
-                for (let i = 0, n = photosets.length; i < n; i++) {
-                    makeLightboxes(photosets[i]);
-                    makePhotoset(photosets[i]);
-                }
-            }
-
-            function makeLightboxes(photoset) {
-        	// get image containers in photoset
-        	let image_containers = photoset.getElementsByClassName("image-container");
-
-        	// loop over image containers
-        	for (let i = 0, n = image_containers.length; i < n; i++) {
-        		// add click event to image container
-        		image_containers[i].addEventListener("click", function() {
-        			// current is the image's index in the photoset
-        			// due to tumblr reasons, it starts at 1
-        			let current = i + 1;
-
-        			// activate lightbox
-        			lightbox(image_containers, current);
-        		});
-        	}
+        function gatherData(images, arr) {
+          for (let i = 0; i < images.length; i++) {
+            let currentData = {
+              "width": images[i].getAttribute('data-width'),
+              "height": images[i].getAttribute('data-height'),
+              "low_res": images[i].getAttribute('data-lowres'),
+              "high_res": images[i].getAttribute('data-highres')
+            };
+            arr.push(currentData);
+          }
         }
-
-        function lightbox(image_containers, current) {
-        	// array of lightboxes for each image in photoset
-        	// lightbox is represented by an object
-        	let lightboxes = [];
-
-        	// loop over image containers
-        	for (let i = 0, n = image_containers.length; i < n; i++) {
-        		// create object for image container
-        		let image_container = image_containers[i]
-        		let arrayContents = {
-        			"width" : image_container.dataset.width,
-        			"height" : image_container.dataset.height,
-        			"low_res" : image_container.dataset.lowres,
-        			"high_res" : image_container.dataset.highres,
-        		}
-
-        		// add object to array
-        		lightboxes.push(arrayContents);
-        	}
-
-        	// activate built-in tumblr function
-        	Tumblr.Lightbox.init(lightboxes, current);
+        function getIndex(elem) {
+          let i = 0;
+          while( (elem = elem.previousElementSibling) != null ) i++;
+          return i;
         }
-
-        function makePhotoset(photoset) {
-        	// get image containers in photoset
-        	let images = photoset.getElementsByClassName("image-container");
-
-        	// get layout of photoset -- formatted as string of numbers of images per row
-        	// e.g "231" means row of 2 images, row of 3 images, row of 1 image
-        	let layout = photoset.dataset.layout;
-
-        	// loop over each row
-        	for (let i = 0, n = layout.length; i < n; i++) {
-        		// get number of images in row
-        		let cols = layout.charAt(i);
-
-        		// create row
-        		// row is a div with classes "photo-row" and "photo-row-n"
-        		let row = document.createElement("div");
-        		row.classList.add("photo-row-" + cols);
-        		row.classList.add("photo-row");
-
-        		// loop over number of images in row
-        		// move the right amount of images to row
-        		for (let j = 0; j < cols; j++) {
-        			row.appendChild(images[0]);
-        		}
-
-        		// add row to the photoset
-        		photoset.appendChild(row);
-        	}
+        function lightbox(elem) {
+          let currentPhotoset = elem.parentNode;
+          let photosetPhotos = currentPhotoset.getElementsByTagName('div');
+          let data = [];
+          gatherData(photosetPhotos, data);
+          Tumblr.Lightbox.init(data, getIndex(elem) + 1);
         }
         </script>
         
@@ -2311,65 +2206,6 @@ Have fun!
             }
             
             $(document).ready(flexFrame);
-        </script>
-        
-        <script>
-            /* script by @robinpx - github */
-
-            function fixFrame(selector) {
-                fixVidRatio(selector); 
-                var height = selector.find("iframe").height();
-                var wid = selector.find("iframe").width();
-                
-                if (height === wid) { 
-                    if (wid < 540) {
-                        height = 540; 
-                        wid = 540; 
-                    } 
-                }    
-                if (height > 540) {
-                    height = 540;
-                }
-                var heightPercent = (height  / wid) * 100;
-                if (height > wid) { 
-                    heightPercent = (wid / height) * 100; 
-                }   
-                selector.css({ position: "relative", width: "100%", height: "0", paddingBottom: heightPercent + "%", overflow: "hidden" }); 
-                selector.find("iframe").css({ position: "absolute", width: "100%", height: "100%", left: "0", bottom: "0" }); 
-            }
-            
-            function flexibleFrames(selector) {
-                   selector.not(".resized").each(function() {
-                       var frame = $(this).find("iframe:not(.bandcamp_audio_player, .spotify_audio_player, .soundcloud_audio_player)");
-                       frame.on("load", function() {
-                         fixFrame(frame.parent());
-                       });
-                       $(this).addClass("resized");
-                    });
-                    
-                 $(".tumblr_video_container").css({ height: "auto", width: "auto" });
-                 selector.find(".tumblr_video_container").parent().css({ maxHeight : "540px" }); // back-up 
-                 var w = [selector.parent().width(), $(".spotify_audio_player").width() + 80, $(".soundcloud_audio_player").width()];
-                   $("<style>.flickr-embed-frame {max-height:" + w[0] + "px!important;width:100%!important;} .instagram-media {max-width:calc(100% - 2px)!important;min-width:calc(100% - 2px)!important;} .spotify_audio_player {height:" + w[1] + "px!important;} .soundcloud_audio_player {height:" + w[2] + "px!important;} .spotify_audio_player, .soundcloud_audio_player, .bandcamp_audio_player {width:100%!important;}</style>").appendTo("head");
-                 $(window).resize(function() {
-                     w = [selector.parent().width(), $(".spotify_audio_player").width() + 80, $(".soundcloud_audio_player").width()];
-                     $("<style>.flickr-embed-frame {max-height:" + w[0] + "px!important;} .spotify_audio_player {height:" + w[1] + "px!important;} .soundcloud_audio_player{height:" + w[2] + "px!important;} </style> ").appendTo("head");      
-                 });
-                 return true;
-            }
-            
-            function fixVidRatio(selector) {
-                var w = selector.find("iframe").width();
-                var h = selector.find("iframe").height();
-                var scale = selector.parent().width() / w;
-                if (h > 540) {
-                       h = 540;
-                }
-                selector.find("iframe").css({ 
-                    width: scale * w,
-                    height: scale * h
-                }); 
-
         </script>
         
         <!--Smooth Header Scrolling script. -->
